@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Задани 1</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <div id="string-1">Ядра в вёдра, выдру в тундру!</div>
+    <div id="string-2">Выдрав с выдры в тундре гетры</div>
+    <div id="string-3">В недрах тундры, выдры в гетрах </div>
+    <div id="string-4">Вытру гетрой выдре морду </div>
+    <div id="string-5">Тырят в вёдра ядра кедров!</div>
+    <div id="string-6">Вытру выдрой ядра кедров</div>
+    
+    <script type="application/javascript">
+        
+        {
+            console.log(document.getElementById('string-3').innerText);
+            console.log(document.getElementById('string-5').innerText);
+            console.log(document.getElementById('string-2').innerText);
+            console.log(document.getElementById('string-6').innerText);
+            console.log(document.getElementById('string-4').innerText);
+            console.log(document.getElementById('string-1').innerText);
+        }
+        
+    </script>
+    
+    <div class="element">Element 1</div>
+    <div class="element">Element 2</div>
+    <div class="element">Element 3</div>
+    <div class="element">Element 4</div>
+    <div class="element">Element 5</div>
+    <div class="element">Element 6</div>
+    
+    <script type="application/javascript">
+        var elements = document.getElementsByClassName('element');
+        
+        for (var row = 0; row < elements.length; row++) {
+            if (row < 3) {
+                elements[row].style.color = 'red';
+            } else if (row > 2 && row < 6) {
+                elements[row].style.color = 'green';
+            }
+        }
+    </script>
+    
+    <div id="container"></div>
+    <input id="add-item-btn" type="button" value="+">
+    
+    <script type="application/javascript">
+        $(function () {
+            var container = $('#container');
+            var addEventListener = $('#add-item-btn');
+            
+            addEventListener.on('click',
+            function () {
+                var div_elements = $('<div class="element">').text('Element');
+                    container.append(div_elements);
+                });
+            });
+        </script>
+        
+        
+    </body>
+    </html>
+    
