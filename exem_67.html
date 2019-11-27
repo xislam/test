@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exem_67</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            var container = $('#container');
+            var startBtn = $('#start'); //бощая переменная для старта опирации
+            var stopBtn = $('#stop');
+            var element;
+            var Started = true;
+            
+            var addElement = function () {
+                element = setInterval(function () {
+                    var randomNum = Math.floor((Math.random() * 21));
+                    var newRow = $('<div class="element">').text(randomNum);
+                        container.append(newRow);
+                    }, 5000);
+                };
+                
+                addElement();
+                stopBtn.on('click', function (event) {
+                    event.preventDefault();
+                    clearInterval(element);
+                    Started = false;
+                });
+                
+                startBtn.on('click', function (event) {
+                    event.preventDefault(); 
+                    if (!Started) {
+                        addElement();
+                    }
+                    Started = true;
+                });
+                
+                
+            });
+        </script>
+    </head>
+    <body>
+        <div id="container"></div>
+        <!-- элементы упровления(кнопки) -->
+        <button id="start" > Start </button>
+        <button id="stop">Стоп</button>
+    </body>
+    </html>
