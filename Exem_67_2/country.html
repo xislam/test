@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Country deital</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+</head>
+<body>
+    <section class="container">
+        
+    </section>
+    <script src="jquery.min.js"></script>
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var param = urlParams.get('code');
+        
+        $.ajax({
+            url: `https://restcountries.eu/rest/v2/alpha/${param}`,
+            method: 'GET',
+            success: function(response, status) {
+                console.log(response);
+                console.log(status);
+                renderCountryData(response);
+            },
+            error: function(response, status) {
+                console.log(status);
+            }
+        });
+        
+        function renderCountryData(response) {
+            const container = $('.container');
+            let countryRow = $(document.createElement('div'));
+            countryRow.addClass('country');
+             countryRow.append(`<img style="width: 10%; height: 25%; " src="${response.flag}" alt="${response.alpha3Code}">`);
+            countryRow.append(`<h2>${response.name}</h2>`);
+            countryRow.append(`<h1>Столица: ${response.capital}</h1>`);
+            countryRow.append(`<h1>Популяция: ${response.population} человек</h1>`);
+            countryRow.append(`<h1>Регион: ${response.region}</h1>`);
+            countryRow.append(`<h1>Локация: ${response.subregion}</h1>`);
+            let borders = $(document.createElement('div'));
+            countryRow.append(borders);
+            container.append(countryRow);
+        }
+    </script>
+    
+</body>
+</html>
